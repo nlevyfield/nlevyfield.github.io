@@ -1,0 +1,53 @@
+{{ define "header" }}
+<header id="home" class="hero" style="background-image: url('{{ site.Params.featured_image | relURL }}');">
+  {{ partial "nav.html" . }}
+  <div class="hero-text">
+    <h1>{{ .Params.heading }}</h1>
+    <p>{{ .Description }}</p>
+    <a class="button" href="#contact">Get in Touch</a>
+  </div>
+</header>
+{{ end }}
+
+{{ define "main" }}
+<section id="services" class="section">
+  <h2>Services</h2>
+  <div class="services">
+    {{ range .Params.services }}
+      <div class="card">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </div>
+    {{ end }}
+  </div>
+</section>
+
+<section id="about" class="section tinted">
+  <div class="about">
+    <img src="{{ "images/headshot.jpg" | relURL }}" alt="Nadine Levyfield" width="800" height="1000" loading="lazy">
+    <div>
+      <h2>About</h2>
+      {{ range .Params.about }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="section dark">
+  <h2>Testimonials</h2>
+  <div class="testimonials">
+    {{ range .Params.testimonials }}
+      <figure>
+        <blockquote>{{ .quote }}</blockquote>
+        <figcaption><strong>{{ .name }}</strong>, {{ .role }}</figcaption>
+      </figure>
+    {{ end }}
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <img src="{{ "images/logo.jpg" | relURL }}" alt="Sunflower Strategies LLC logo" width="600" height="604" loading="lazy">
+  <h2>Let’s Work Together</h2>
+  <p>Ready to move your organization forward? Let’s connect.</p>
+  <a class="button" href="mailto:{{ site.Params.email }}?subject=Consultation%20Request" target="_blank" rel="noopener">Schedule a Consultation</a>
+</section>
+{{ end }}

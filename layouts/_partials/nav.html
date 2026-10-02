@@ -1,0 +1,11 @@
+<nav class="site-nav" role="navigation">
+  <a class="brand" href="{{ "#home" | relURL }}">
+    <img src="{{ "images/mark.png" | relURL }}" alt="" width="33" height="40">
+    <span>Sunflower Strategies</span>
+  </a>
+  <ul>
+    {{ range site.Menus.main }}
+      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+</nav>
